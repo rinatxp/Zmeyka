@@ -20,8 +20,8 @@ namespace Zmeyka
             label2.Text = "00:00:00";
         }
 
-        static byte poleX = 30, poleY = 25; //Размеры поля
-        float prirost = 0.1F; //Коэффициент плавности движения
+        static byte poleX = 35, poleY = 25; //Размеры поля
+        float prirost = 0.2F; //Коэффициент плавности движения
         int rost = 10;
         int every10coord;
         int pixelX, pixelY; //Размеры "пикселя"
@@ -82,7 +82,7 @@ namespace Zmeyka
             headX = 10.0F;
             headY = 13.0F; //Начальные координаты головы
             moveWay = 2; //Начальное направление
-            timer1.Interval = 12;
+            timer1.Interval = 6;
             timer2.Interval = 1000;
             timer1.Start(); // Запускаем таймер
             timer2.Start();
@@ -258,7 +258,7 @@ namespace Zmeyka
                     if (Math.Round(snakeCoord[0].Y + vis1) == Math.Round(appleCoord.Y * pixelY + vis2))
                         if (a >= appleCoord.X * pixelX && a <= appleCoord.X * pixelX + pixelX)
                         {
-                            rost += 10 / (int)(prirost * 10);
+                            rost += 100 / (int)(prirost * 100);
                             Yabl();
                         }
                 } //Если вверх или вниз
@@ -319,7 +319,7 @@ namespace Zmeyka
             label1.Text = "Яблок: " + appleNumber.ToString();
         } //Рисуем яблоко
 
-        public class Coords
+        public struct Coords
         {
             public float X;
             public float Y;
